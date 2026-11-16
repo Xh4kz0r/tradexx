@@ -1,0 +1,340 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRADEX | Pokémon Trading</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #09090d;
+    color: white;
+}
+
+header {
+    height: 75px;
+    background: #101016;
+    border-bottom: 1px solid #292033;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #bb86fc;
+}
+
+nav a {
+    color: #aaa;
+    text-decoration: none;
+    margin-left: 25px;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #bb86fc;
+}
+
+.login {
+    background: #9b59b6;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.hero {
+    text-align: center;
+    padding: 85px 20px;
+    background: radial-gradient(circle, #321447, #09090d 70%);
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #bb86fc;
+}
+
+.hero p {
+    color: #aaa;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+.search {
+    width: 90%;
+    max-width: 500px;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid #49305d;
+    background: #15121b;
+    color: white;
+    outline: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 20px;
+}
+
+.section-title {
+    font-size: 27px;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #131219;
+    border: 1px solid #292033;
+    border-radius: 14px;
+    padding: 20px;
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #9b59b6;
+}
+
+.pokemon {
+    font-size: 65px;
+    text-align: center;
+    padding: 20px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.value {
+    color: #bb86fc;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.card button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #9b59b6;
+    color: white;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #8145a0;
+}
+
+.calculator {
+    background: #131219;
+    border: 1px solid #292033;
+    padding: 25px;
+    border-radius: 14px;
+    margin-top: 50px;
+}
+
+.calculator input {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    background: #09090d;
+    border: 1px solid #49305d;
+    border-radius: 8px;
+    color: white;
+}
+
+.calculator button {
+    padding: 12px 20px;
+    background: #9b59b6;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 20px;
+    color: #bb86fc;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+    border-top: 1px solid #292033;
+    margin-top: 50px;
+}
+
+@media(max-width: 650px) {
+    header {
+        padding: 15px;
+    }
+
+    nav a {
+        margin-left: 8px;
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">TRADEX.</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#trades">Trades</a>
+        <a href="#calculator">Calculator</a>
+    </nav>
+
+    <button class="login" onclick="alert('Login coming soon!')">
+        Login
+    </button>
+</header>
+
+<section class="hero">
+    <h1>Welcome to <span>TRADEX</span></h1>
+    <p>The ultimate Pokémon Trading Marketplace.</p>
+
+    <input
+        class="search"
+        id="search"
+        placeholder="Search Pokémon..."
+        oninput="searchPokemon()"
+    >
+</section>
+
+<main class="container">
+
+    <h2 class="section-title" id="trades">🔥 Latest Offers</h2>
+
+    <div class="grid" id="pokemonGrid">
+
+        <div class="card" data-name="pikachu">
+            <div class="pokemon">⚡</div>
+            <h3>Pikachu</h3>
+            <p>Owner: Trainer123</p>
+            <div class="value">Value: 500</div>
+            <button onclick="contact('Pikachu')">View Offer</button>
+        </div>
+
+        <div class="card" data-name="charizard">
+            <div class="pokemon">🔥</div>
+            <h3>Charizard</h3>
+            <p>Owner: PokemonMaster</p>
+            <div class="value">Value: 2500</div>
+            <button onclick="contact('Charizard')">View Offer</button>
+        </div>
+
+        <div class="card" data-name="mewtwo">
+            <div class="pokemon">🔮</div>
+            <h3>Mewtwo</h3>
+            <p>Owner: LegendaryPlayer</p>
+            <div class="value">Value: 5000</div>
+            <button onclick="contact('Mewtwo')">View Offer</button>
+        </div>
+
+        <div class="card" data-name="gengar">
+            <div class="pokemon">👻</div>
+            <h3>Gengar</h3>
+            <p>Owner: GhostTrader</p>
+            <div class="value">Value: 1200</div>
+            <button onclick="contact('Gengar')">View Offer</button>
+        </div>
+
+    </div>
+
+    <section class="calculator" id="calculator">
+        <h2>⚖️ Trade Calculator</h2>
+
+        <p style="color:#aaa;margin-top:10px;">
+            Compare the values of your Pokémon trades.
+        </p>
+
+        <input type="number" id="yourValue" placeholder="Your offer value">
+
+        <input type="number" id="theirValue" placeholder="Their offer value">
+
+        <button onclick="calculate()">Calculate Trade</button>
+
+        <h3 id="result"></h3>
+    </section>
+
+</main>
+
+<footer>
+    © 2026 TRADEX. All rights reserved.
+    <br><br>
+    TRADEX is a fan-made trading platform.
+    Not affiliated with Nintendo or The Pokémon Company.
+</footer>
+
+<script>
+function searchPokemon() {
+    const input = document.getElementById("search").value.toLowerCase();
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        const name = card.dataset.name;
+
+        card.style.display = name.includes(input) ? "block" : "none";
+    });
+}
+
+function calculate() {
+    const yours = Number(document.getElementById("yourValue").value);
+    const theirs = Number(document.getElementById("theirValue").value);
+    const result = document.getElementById("result");
+
+    if (yours <= 0 || theirs <= 0) {
+        result.innerText = "Please enter both values!";
+        return;
+    }
+
+    const difference = Math.abs(yours - theirs);
+
+    if (difference === 0) {
+        result.innerText = "⚖️ Fair Trade!";
+    } else if (yours > theirs) {
+        result.innerText = "📉 You are overpaying by " + difference;
+    } else {
+        result.innerText = "📈 You are getting a better deal by " + difference;
+    }
+}
+
+function contact(pokemon) {
+    alert("You selected " + pokemon + "! Trading system coming soon.");
+}
+</script>
+
+</body>
+</html>
+```
